@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:ChatApp_Collado.CustomRenderers"
+             x:Class="ChatApp_Collado.Views.ConversationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Header -->
+            <StackLayout Orientation="Horizontal" WidthRequest="300" HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
+                <Label Text="{Binding Header}"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"
+                       FontSize="30"
+                       Padding="5"
+                       TextColor="Gray"/>
+                <local:CustomButton 
+                    Text="X" 
+                    Margin="0"
+                    Padding="0"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    HeightRequest="25" 
+                    WidthRequest="25"
+                    BackgroundColor="LightCoral" 
+                    TextColor="White"
+                    Command="{Binding ToggleCloseButton}"/>
+            </StackLayout>
+            <!-- Conversation Body -->
+            <StackLayout VerticalOptions="StartAndExpand">
+                <CollectionView ItemsSource="{Binding ItemSource}" EmptyView="You can now start a conversation with this person.">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" 
+                                           ItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="LightCoral" Padding="10" CornerRadius="10" HorizontalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label Text="{Binding Content}" TextColor="White"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <!-- Input Message -->
+            <StackLayout Orientation="Horizontal" 
+                         VerticalOptions="EndAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="LightGray" Padding="5">
+                <Entry Placeholder="Write your message here..."
+                       Text="{Binding Message}"
+                       BackgroundColor="White"
+                       HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton Text="Send" 
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding ToggleSendMsg}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

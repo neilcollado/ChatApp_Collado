@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ChatApp_Collado.CustomRenderers"
+             x:Class="ChatApp_Collado.Views.ProfilePage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <local:CustomBoxView 
+                    BackgroundColor="#2F2D2E"
+                    Margin="-34"
+                    CornerRadius="100"
+                    Grid.Column="1"
+                    Grid.Row="1"/>
+                
+                <local:CustomBoxView 
+                    BackgroundColor="#99c24d"
+                    Margin="-27"
+                    CornerRadius="100"
+                    Grid.Column="1"
+                    Grid.Row="1"/>
+                
+                <local:CustomBoxView 
+                    BackgroundColor="LightCoral"
+                    Margin="-20"
+                    CornerRadius="100"
+                    Grid.Column="1"
+                    Grid.Row="1"/>
+                
+                <Image Source="ProfileDefault"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                       Margin="5,18,0,0"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+                <Label Text="John Doe"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       FontSize="30"
+                       FontAttributes="Bold"                       
+                       HorizontalOptions="Center"/>
+                <Label Text="John_Doe@gmail.com"
+                       Grid.Row="4"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3" 
+                       FontSize="20"
+                       FontAttributes="Bold"    
+                       HorizontalOptions="Center"/>
+                <local:CustomButton 
+                    Text="Sign out"
+                    Margin="10"
+                    CornerRadius="10"
+                    FontSize="18"
+                    HeightRequest="60"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"/>
+            </Grid>
+   
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
