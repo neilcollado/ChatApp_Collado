@@ -20,3 +20,6 @@ C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\
 C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\obj\Debug\netstandard2.0\Views\ForgotPasswordPage.xaml.g.cs
 C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\obj\Debug\netstandard2.0\Views\SearchResultPage.xaml.g.cs
 C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\obj\Debug\netstandard2.0\Views\ConversationPage.xaml.g.cs
+C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\obj\Debug\netstandard2.0\Views\Cells\IncomingViewCell.xaml.g.cs
+C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\obj\Debug\netstandard2.0\Views\Cells\OutgoingViewCell.xaml.g.cs
+C:\Users\colla\Documents\Github\ChatApp_Collado\ChatApp_Collado\ChatApp_Collado\obj\Debug\netstandard2.0\Views\Partials\ChatInputBarView.xaml.g.cs

@@ -1,20 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:ChatApp_Collado.CustomRenderers"
+             xmlns:local="clr-namespace:ChatApp_Collado.CustomRenderers" 
+             xmlns:template="clr-namespace:ChatApp_Collado.Helpers" 
+             xmlns:controls="clr-namespace:ChatApp_Collado.Controls" 
+             xmlns:partials="clr-namespace:ChatApp_Collado.Views.Partials"
              x:Class="ChatApp_Collado.Views.ConversationPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <!-- Header -->
-            <StackLayout Orientation="Horizontal" WidthRequest="300" HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
-                <Label Text="{Binding Header}"
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <template:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowSpacing="0" 
+           ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" Orientation="Horizontal" WidthRequest="300" HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
+            <Label Text="{Binding Header}"
                        HorizontalOptions="StartAndExpand"
                        VerticalOptions="Center"
                        FontAttributes="Bold"
                        FontSize="30"
                        Padding="5"
                        TextColor="Gray"/>
-                <local:CustomButton 
+            <local:CustomButton 
                     Text="X" 
                     Margin="0"
                     Padding="0"
@@ -24,39 +39,27 @@
                     WidthRequest="25"
                     BackgroundColor="LightCoral" 
                     TextColor="White"
-                    Command="{Binding ToggleCloseButton}"/>
-            </StackLayout>
-            <!-- Conversation Body -->
-            <StackLayout VerticalOptions="StartAndExpand">
-                <CollectionView ItemsSource="{Binding ItemSource}" EmptyView="You can now start a conversation with this person.">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" 
-                                           ItemSpacing="5" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="LightCoral" Padding="10" CornerRadius="10" HorizontalOptions="CenterAndExpand">
-                                <StackLayout>
-                                    <Label Text="{Binding Content}" TextColor="White"/>
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-            <!-- Input Message -->
-            <StackLayout Orientation="Horizontal" 
-                         VerticalOptions="EndAndExpand"
-                         HorizontalOptions="FillAndExpand"
-                         BackgroundColor="LightGray" Padding="5">
-                <Entry Placeholder="Write your message here..."
-                       Text="{Binding Message}"
-                       BackgroundColor="White"
-                       HorizontalOptions="FillAndExpand"/>
-                <local:CustomButton Text="Send" 
-                                    BackgroundColor="Transparent"
-                                    Command="{Binding ToggleSendMsg}"/>
-            </StackLayout>
+                    Clicked="CloseConversation"/>
         </StackLayout>
-    </ContentPage.Content>
+ 
+        <controls:ExtendedListView Grid.Row="1"
+                 ItemTemplate="{StaticResource MessageTemplateSelector}" 
+                 ItemsSource="{Binding Messages}" 
+                 Margin="0"
+                 FlowDirection="RightToLeft"
+                 HasUnevenRows="True" x:Name="ChatList"
+                 VerticalOptions="FillAndExpand" 
+                 SeparatorColor="Transparent"
+                 ItemAppearingCommand="{Binding MessageAppearingCommand}"
+                 ItemDisappearingCommand="{Binding MessageDisappearingCommand}">
+        </controls:ExtendedListView>
+
+        <BoxView HorizontalOptions="FillAndExpand"
+                 HeightRequest="1"
+                 BackgroundColor="LightGray"
+                 Grid.Row="2"/>
+        <partials:ChatInputBarView Grid.Row="3"
+                                   Margin="0,0,10,0"
+                                   x:Name="chatInput"/>
+    </Grid>
 </ContentPage>

@@ -14,22 +14,14 @@ namespace ChatApp_Collado.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChatPage : ContentPage
     {
-        readonly User current_user = new User()
-        {
-            Username = "Neil Collado",
-            Email = "neilcollado@gmail.com",
-            Contacts = new ObservableCollection<User>
-            {
-                new User { Username = "John Doe",  Email = "JohnDoe@gmail.com" },
-            }
-        };
+        readonly User current_user = App.user;
 
         public ChatPage()
         {
             InitializeComponent();
             allUsers = new ObservableCollection<User>
             {
-                new User{Username="John Doe", Email="JohnDoe@gmail.com"},
+                new User{Id = 202, Username="John Doe", Email="JohnDoe@gmail.com"},
                 new User{Username="Neil Collado", Email="neilcollado@gmail.com"},
                 new User {Username = "Juan Dela Cruz", Email = "JuanDCruz@gmail.com"},
                 new User {Username = "Luffy Monkey", Email = "LuffyTaro@gmail.com"},
